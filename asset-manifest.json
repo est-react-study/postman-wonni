@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.js": "/postman-wonni/static/js/main.2d0d468e.chunk.js",
+    "main.js.map": "/postman-wonni/static/js/main.2d0d468e.chunk.js.map",
+    "runtime-main.js": "/postman-wonni/static/js/runtime-main.4b099718.js",
+    "runtime-main.js.map": "/postman-wonni/static/js/runtime-main.4b099718.js.map",
+    "static/js/2.7df22706.chunk.js": "/postman-wonni/static/js/2.7df22706.chunk.js",
+    "static/js/2.7df22706.chunk.js.map": "/postman-wonni/static/js/2.7df22706.chunk.js.map",
+    "index.html": "/postman-wonni/index.html",
+    "precache-manifest.5bff87ff975610e8fc5a1fca99b6b895.js": "/postman-wonni/precache-manifest.5bff87ff975610e8fc5a1fca99b6b895.js",
+    "service-worker.js": "/postman-wonni/service-worker.js",
+    "static/js/2.7df22706.chunk.js.LICENSE.txt": "/postman-wonni/static/js/2.7df22706.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4b099718.js",
+    "static/js/2.7df22706.chunk.js",
+    "static/js/main.2d0d468e.chunk.js"
+  ]
+}
