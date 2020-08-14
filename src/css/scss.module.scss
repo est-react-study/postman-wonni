@@ -1,0 +1,164 @@
+@charset "UTF-8";
+
+@import "./vars.scss";
+
+@function _buildIcon($icon) {
+  $icon: "%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20width%3D%2224%22%20height%3D%2224%22%3E#{$icon}%3C%2Fsvg%3E";
+  @return $icon;
+}
+
+@function _buildPath($path, $parameters) {
+  $icon: "%3Cpath%20fill%3D%22#{map-get($parameters, color)}%22%20stroke%3D%22#{map-get($parameters, stroke-color)}%22%20stroke-width%3D%22#{map-get($parameters, stroke-width)}%22%20style%3D%22#{map-get($parameters, css)}%22%20d%3D%22#{$path}%22%20%2F%3E";
+  @return $icon;
+}
+
+@function icon(
+  $icon-name,
+  $color,
+  $stroke-color: transparent,
+  $stroke-width: 0,
+  $css: ""
+) {
+  $parameters: (
+    "color": $color,
+    "stroke-color": $stroke-color,
+    "stroke-width": $stroke-width,
+    "css": $css,
+  );
+
+  $icons: (
+    heart:
+    _buildPath(
+      "M12 21.35l-1.45-1.32c-5.15-4.67-8.55-7.75-8.55-11.53 0-3.08 2.42-5.5 5.5-5.5 1.74 0 3.41.81 4.5 2.09 1.09-1.28 2.76-2.09 4.5-2.09 3.08 0 5.5 2.42 5.5 5.5 0 3.78-3.4 6.86-8.55 11.54l-1.45 1.31z",
+      $parameters
+    ),
+    star:
+    _buildPath(
+      "M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z",
+      $parameters
+    ),
+  );
+
+  $icon: _buildIcon(map-get($icons, $icon-name));
+  @return url("data:image/svg+xml;charset=utf8,#{$icon}");
+}
+
+.icon {
+  width: 48px;
+  height: 48px;
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/18515/heart-sprite.svg) no-repeat;
+  background-size: cover;
+  display: inline-block;
+}
+
+.icon_red {
+  background-image: icon(heart, red);
+}
+
+.icon_orange {
+  background-image: icon(heart, orange);
+}
+
+.icon_yellow {
+  background-image: icon(heart, yellow);
+}
+
+.icon_green {
+  background-image: icon(heart, green);
+}
+
+.icon_blue {
+  background-image: icon(heart, blue);
+}
+
+.icon_indigo {
+  background-image: icon(heart, indigo);
+}
+
+.icon_violet {
+  background-image: icon(heart, violet);
+}
+
+.icon_cyan {
+  background-image: icon(heart, cyan);
+}
+
+.icon_magenta {
+  background-image: icon(heart, magenta);
+}
+
+.icon_lime {
+  background-image: icon(heart, lime);
+}
+
+.icon_olive {
+  background-image: icon(heart, olive);
+}
+
+.icon_maroon {
+  background-image: icon(heart, maroon);
+}
+
+.icon_purple {
+  background-image: icon(heart, purple);
+}
+
+.icon_white {
+  background-image: icon(heart, white);
+}
+
+.icon_gray10 {
+  background-image: icon(heart, "rgb(230, 230, 230)");
+}
+
+.icon_gray20 {
+  background-image: icon(heart, "rgb(204, 204, 204)");
+}
+
+.icon_gray30 {
+  background-image: icon(heart, "rgb(179, 179, 179)");
+}
+
+.icon_gray40 {
+  background-image: icon(heart, "rgb(153, 153, 153))");
+}
+
+.icon_gray50 {
+  background-image: icon(heart, "rgb(127, 127, 127)");
+}
+
+.icon_gray60 {
+  background-image: icon(heart, "rgb(102, 102, 102)");
+}
+
+.icon_gray70 {
+  background-image: icon(heart, "rgb(76, 76, 76)");
+}
+
+.icon_gray80 {
+  background-image: icon(heart, "rgb(51, 51, 51)");
+}
+
+.icon_gray90 {
+  background-image: icon(heart, "rgb(25, 25, 25)");
+}
+
+.icon_black {
+  background-image: icon(heart, black);
+}
+
+.icon_stroke {
+  background-image: icon(heart, transparent, red, 2);
+}
+
+.icon_stroke-color {
+  background-image: icon(heart, red, black, 2);
+}
+
+.icon_dashstroke {
+  background-image: icon(heart, red, black, 2, "stroke-dasharray : 2px, 1px;");
+}
+
+.icon_star {
+  background-image: icon(star, blue);
+}
