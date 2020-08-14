@@ -30,6 +30,11 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "echo 'Hello Gabia, woof!'"
+    }
+  },
   "browserslist": {
     "production": [
       ">0.2%",
