@@ -4,11 +4,13 @@
 
 @function _buildIcon($icon) {
   $icon: "%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20width%3D%2224%22%20height%3D%2224%22%3E#{$icon}%3C%2Fsvg%3E";
+
   @return $icon;
 }
 
 @function _buildPath($path, $parameters) {
   $icon: "%3Cpath%20fill%3D%22#{map-get($parameters, color)}%22%20stroke%3D%22#{map-get($parameters, stroke-color)}%22%20stroke-width%3D%22#{map-get($parameters, stroke-width)}%22%20style%3D%22#{map-get($parameters, css)}%22%20d%3D%22#{$path}%22%20%2F%3E";
+
   @return $icon;
 }
 
@@ -28,25 +30,28 @@
 
   $icons: (
     heart:
-    _buildPath(
+    _buildpath(
       "M12 21.35l-1.45-1.32c-5.15-4.67-8.55-7.75-8.55-11.53 0-3.08 2.42-5.5 5.5-5.5 1.74 0 3.41.81 4.5 2.09 1.09-1.28 2.76-2.09 4.5-2.09 3.08 0 5.5 2.42 5.5 5.5 0 3.78-3.4 6.86-8.55 11.54l-1.45 1.31z",
       $parameters
     ),
     star:
-    _buildPath(
+    _buildpath(
       "M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z",
       $parameters
     ),
   );
 
-  $icon: _buildIcon(map-get($icons, $icon-name));
+  $icon: _buildicon(map-get($icons, $icon-name));
+
   @return url("data:image/svg+xml;charset=utf8,#{$icon}");
 }
 
 .icon {
   width: 48px;
   height: 48px;
-  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/18515/heart-sprite.svg) no-repeat;
+  background:
+    url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/18515/heart-sprite.svg)
+    no-repeat;
   background-size: cover;
   display: inline-block;
 }
