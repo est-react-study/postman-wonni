@@ -1,5 +1,15 @@
 # Postman Clone Coding
 
+## 설명
+
+server는 따로 local에서..
+
+server 구성  
+DB: https://cloud.mongodb.com/ (email, password 저장)  
+redis: 로컬에.. (refresh token 저장)
+
+front 코드는 예제에 있는 2개 사용 가능
+
 ## 목표
 
 8월 25일까지 최대한 포스트맨과 유사한 앱을 만들기
