@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 
 // import { getIP, getNavigator } from "./hooks/getIP";
 
@@ -21,55 +21,66 @@ const App: React.FC = () => {
   //   getNavigator().then((data) => console.log("Navigator", data));
   // }, []);
 
-  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const { value } = e.target;
-    setSel(value);
-  };
+  const handleChange = useCallback(
+    (e: React.ChangeEvent<HTMLSelectElement>) => {
+      const { value } = e.target;
+      setSel(value);
+    },
+    []
+  );
 
-  const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
-    setText(value);
-  };
+  const handleTextChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const { value } = e.target;
+      setText(value);
+    },
+    []
+  );
 
-  const handleSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (sel && text) {
-      const newTodo: TodoInterface = {
-        sel: sel,
-        text: text,
-      };
+  const handleSignIn = useCallback(
+    async (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      if (sel && text) {
+        const newTodo: TodoInterface = {
+          sel: sel,
+          text: text,
+        };
 
-      const newTodosState: TodoInterface[] = [...list];
-      newTodosState.push(newTodo);
-      setList(newTodosState);
+        const newTodosState: TodoInterface[] = [...list];
+        newTodosState.push(newTodo);
+        setList(newTodosState);
 
-      // http://localhost:4000/auth/login
-      const result = await fetch(newTodo.text, {
-        method: newTodo.sel,
-        credentials: "same-origin",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        // 일단 고정
-        body: JSON.stringify({
-          email: "lsw8168@naver.com",
-          password: "1234",
-        }),
-      });
+        // http://localhost:4000/auth/login
+        const result = await fetch(newTodo.text, {
+          method: newTodo.sel,
+          credentials: "same-origin",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          // 일단 고정
+          body: JSON.stringify({
+            email: "lsw8168@naver.com",
+            password: "1234",
+          }),
+        });
 
-      // console.log(result);]
+        // console.log(result);]
 
-      if (result.status === 200) {
-        const rrr = await result.json();
-        setResult(`status: ${result.status}, message: ${rrr.accessToken}`);
-      } else if (result.status === 400) {
-        const err = await result.json();
-        setResult(`status: ${err.error.status}, message: ${err.error.message}`);
+        if (result.status === 200) {
+          const rrr = await result.json();
+          setResult(`status: ${result.status}, message: ${rrr.accessToken}`);
+        } else if (result.status === 400) {
+          const err = await result.json();
+          setResult(
+            `status: ${err.error.status}, message: ${err.error.message}`
+          );
+        }
+      } else {
+        alert("입력하세요.");
       }
-    } else {
-      alert("입력하세요.");
-    }
-  };
+    },
+    [sel, text, list]
+  );
 
   return (
     <>
